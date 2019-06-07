@@ -8,8 +8,8 @@ from shutil import copy2
 
 
 parser = argparse.ArgumentParser(description='Process for reallocating TOPICA Materials')
-parser.add_argument('infile', help='the feed folder')
-parser.add_argument('outfile', help='output folder')
+parser.add_argument('infile', help='the feed folder e.g: /w24')
+parser.add_argument('outfile', help='output folder e.g: W24')
 parser.add_argument('week',type=int, help='Week # of the year: [1,52]')
 parser.add_argument('-year', default=2019, help='yyyy')
 args = parser.parse_args()
@@ -30,11 +30,11 @@ os.makedirs(args.outfile, exist_ok=True)
 for i in range(7):
 	os.makedirs(out_folder[i], exist_ok=True)
 
-for f_1 in tqdm.tqdm(os.listdir(in_folder)):
-	s_1 = os.path.join(in_folder,f_1)
-	for f_2 in os.listdir(s_1):
+for f_1 in tqdm.tqdm(os.listdir(in_folder)): #PDF and docs folder
+	s_1 = os.path.join(in_folder,f_1) 
+	for f_2 in os.listdir(s_1): # Day folder
 		s_2 = os.path.join(s_1, f_2)
-		for i, f_3 in enumerate(os.listdir(s_2)):
+		for i, f_3 in enumerate(os.listdir(s_2)): #Listfile
 			file = os.path.join(s_2, f_3)
 			#assert f_3[:2] == day_[i][8:10],'There is an error btw date {0} and {1}:'.format(f_3, day_[i][8:10])
 			for k in range(len(out_folder)):
