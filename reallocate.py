@@ -7,8 +7,8 @@ from shutil import copy2
 
 
 
-parser = argparse.ArgumentParser(description='Process for reallocating TOPICA Materials')
-parser.add_argument('infile', help='the feed folder e.g: /w24')
+parser = argparse.ArgumentParser(description='Process for reallocating TOPICA Materials' )
+parser.add_argument('infile', help='the feed folder e.g: D:\Downloads\FDM\Hoclieu_W26\W26')
 parser.add_argument('outfile', help='output folder e.g: W24')
 parser.add_argument('week',type=int, help='Week # of the year: [1,52]')
 parser.add_argument('-year', default=2019, help='yyyy')
